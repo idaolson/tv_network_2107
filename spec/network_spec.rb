@@ -72,9 +72,8 @@ RSpec.describe do
          })
     end
 
-    xit "can return array of prolific actors" do
+    it "can return array of prolific actors" do
       expect(nbc.prolific_actors).to eq(["David Hasselhoff"])
     end
-
   end
 end

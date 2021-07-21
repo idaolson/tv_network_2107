@@ -21,15 +21,27 @@ class Network
   end
 
   def shows_by_actor
+
+    hash = Hash.new
     all_actors = @shows.map do |show|
       show.actors
     end.flatten.uniq!
 
-    #didn't get to finish getting from @shows to the show name in this one
-    all_actors.map { |actor,show| [actor, @shows] }.to_h
+    all_actors.each do |actor|
+      hash[actor] = []
+    end
+
+    @shows.each do |show|
+      show.characters.each do |character|
+        hash[character.actor] << show if show.actors.include?(character.actor)
+      end
+    end
+    hash
   end
 
-  # def prolific_actors
-  #
-  # end
+  def prolific_actors
+    shows_by_actor.each do |key, value|
+      return [key] if value.length > 1
+    end
+  end
 end
