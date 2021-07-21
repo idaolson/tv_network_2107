@@ -17,6 +17,19 @@ class Network
   end
 
   def actors_by_show
-    shows.map { |show,actors| [show, show.actors] }.to_h
+    @shows.map { |show,actors| [show, show.actors] }.to_h
   end
+
+  def shows_by_actor
+    all_actors = @shows.map do |show|
+      show.actors
+    end.flatten.uniq!
+
+    #didn't get to finish getting from @shows to the show name in this one
+    all_actors.map { |actor,show| [actor, @shows] }.to_h
+  end
+
+  # def prolific_actors
+  #
+  # end
 end

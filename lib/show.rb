@@ -1,4 +1,3 @@
-require './lib/character'
 
 class Show
 attr_reader :name, :creator, :characters
@@ -22,5 +21,13 @@ attr_reader :name, :creator, :characters
 
   def actors
     all_actors = characters.map { |character| character.actor }
+  end
+
+  def main_characters_by_show
+    main = characters.map do |character|
+      if character.name == character.name.upcase && character.salary > 500_000
+        return character
+      end
+    end
   end
 end

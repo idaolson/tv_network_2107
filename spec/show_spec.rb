@@ -35,5 +35,9 @@ RSpec.describe do
       knight_rider.actors
       expect(knight_rider.actors).to eq(["David Hasselhoff", "William Daniels"])
     end
+
+    it "can return an array of main characters in a show" do
+      expect(knight_rider.main_characters_by_show).to eq(kitt)
+    end
   end
 end
